@@ -1,8 +1,13 @@
 import express from "express";
 
 import { omikujiRouter } from "./routes/omikuji.route.js";
+import { jankenRouter } from "./routes/janken.route.js";
 
 const app = express();
+// POSTでデータを受け取るために必要
+app.use(express.urlencoded({ extended: true }));
+// JSONデータを使用するために必要
+app.use(express.json());
 const port = 3001;
 
 // Hello World
@@ -13,7 +18,6 @@ app.get("/", (req, res) => {
     message: "Hello Node.js!!!!"
   })
 });
-
 
 // おみくじの処理
 // app.get("/omikuji", (req, res) => {
@@ -27,16 +31,20 @@ app.get("/", (req, res) => {
 //   })
 // });
 
+// じゃんけんの処理
+// app.get("/janken", (req, res) => {
+//   res.json({
+//     uri: "/",
+//     message: "janken!!!!"
+//   })
+// });
+
 // おみくじ処理をroute/controller/serviceでわけた
 app.use("/omikuji", (req, res) => omikujiRouter(req, res));
 
-// じゃんけんの処理
-app.get("/janken", (req, res) => {
-  res.json({
-    uri: "/",
-    message: "janken!!!!"
-  })
-});
+// じゃんけん処理をroute/controller/serviceでわけた
+app.use("/janken", (req, res) => jankenRouter(req, res));
+
 
 // サーバーの立ち上げ
 app.listen(port, () => {
