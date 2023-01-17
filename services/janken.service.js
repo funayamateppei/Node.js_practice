@@ -4,6 +4,8 @@ export const getJanken = async (query) => {
     const myIndex = hand.indexOf(query.myhand);
     if (myIndex === -1) return { message: "Invalid hand..." };
     const comIndex = Math.floor(Math.random() * 3);
+    // ~~ === Math.floor() 同じ意味
+    // const comIndex = ~~(Math.random() * 3);
     const resultSheet = [
       ["Draw", "Win", "Lose"],
       ["Lose", "Draw", "Win"],
