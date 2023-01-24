@@ -5,7 +5,8 @@ export const getWeather = async (query) => {
     const url =
       "https://api.open-meteo.com/v1/forecast?latitude=35.6785&longitude=139.6823&daily=weathercode,temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=Asia%2FTokyo";
     const weather = (await axios.get(url)).data;
-    return weather;
+    const weatherData = weather.daily;
+    return weatherData;
   } catch (e) {
     throw Error("Error while getting Weather.");
   }
