@@ -3,6 +3,7 @@ import express from "express";
 import { omikujiRouter } from "./routes/omikuji.route.js";
 import { jankenRouter } from "./routes/janken.route.js";
 import { scrapingRouter } from "./routes/scraping.route.js";
+import { weatherRouter } from "./routes/weather.route.js";
 
 const app = express();
 // POSTでデータを受け取るために必要
@@ -48,6 +49,9 @@ app.use("/janken", (req, res) => jankenRouter(req, res));
 
 // スクレイピング処理をルーティング
 app.use("/scraping", (req, res) => scrapingRouter(req, res));
+
+// 外部API処理をルーティング
+app.use("/weather", (req, res) => weatherRouter(req, res));
 
 // サーバーの立ち上げ
 app.listen(port, () => {
