@@ -11,6 +11,7 @@ const createElement = ({ data }) =>
     `<tr><td>最高気温</td><td>${data.weatherData.temperature_2m_max}</td></tr>`,
     `<tr><td>最低気温</td><td>${data.weatherData.temperature_2m_min}</td></tr>`,
     `<tr><td>今日のクレド（ja）</td><td>${data.credoData.text_ja}</td></tr>`,
+    `<tr><td>今日のクレド</td><td><img src=${data.credoData.img_url}></td></tr>`,
     `</tbody>`,
   ].join("");
 
