@@ -4,6 +4,7 @@ import { omikujiRouter } from "./routes/omikuji.route.js";
 import { jankenRouter } from "./routes/janken.route.js";
 import { scrapingRouter } from "./routes/scraping.route.js";
 import { weatherRouter } from "./routes/weather.route.js";
+import { todayRouter } from "./routes/today.route.js";
 
 const app = express();
 // POSTでデータを受け取るために必要
@@ -52,6 +53,9 @@ app.use("/scraping", (req, res) => scrapingRouter(req, res));
 
 // 外部API処理をルーティング
 app.use("/weather", (req, res) => weatherRouter(req, res));
+
+// 指定した場所の今日の情報をとるルーティング
+app.use("/today", (req, res) => todayRouter(req, res));
 
 // サーバーの立ち上げ
 app.listen(port, () => {
