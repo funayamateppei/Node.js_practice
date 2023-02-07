@@ -11,6 +11,10 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 // JSONデータを使用するために必要
 app.use(express.json());
+
+// フロントに表示するhtmlファイルのルーティング
+app.use("/", express.static("static"));
+
 const port = 3001;
 
 // Hello World
